@@ -60,7 +60,7 @@
                     <div class="row">
                         <a id="startlearningjapanese" class="smooth"></a>
                         <img class="img" src="teach japanese_Fotor.jpg" alt="coffee">
-                        <button id="start" onclick="writeNewPost()">開始學吧！</button>
+                        <button id="start" onclick="addContact('glenchao', 'glenchao@outlook.com')">開始學吧！</button>
                     </div>
                 </div>
 
@@ -124,37 +124,57 @@
                                     <button type='submit'>寄出:</button>
                                 </div>
                                 <script src="app.js"></script>
+                            </form>
                         </div>
                   </div>
 
         <!--Firebase-->
+        <script src="jquery-2.1.0.min.js"></script>
+        <script src="dist/js/bootstrap.js"></script>
 
         <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
         <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCTAD_8dK9w5MYRvPNbHr7isUGcIZNtDrU",
-            authDomain: "project-3373896903953203314.firebaseapp.com",
-            databaseURL: "https://project-3373896903953203314.firebaseio.com",
-            storageBucket: "project-3373896903953203314.appspot.com",
-        };
-        //Basic Firebase Saving Data
-        firebase.initializeApp(config);
-            
-            $(function writeNewPost(uid, username, title, body) {
-            // A post entry.
-            var postData = {
-                author: username,
-                uid: uid,
-                body: body,
-                title: title,
-                starCount: 0
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCTAD_8dK9w5MYRvPNbHr7isUGcIZNtDrU",
+                authDomain: "project-3373896903953203314.firebaseapp.com",
+                databaseURL: "https://project-3373896903953203314.firebaseio.com",
+                storageBucket: "project-3373896903953203314.appspot.com",
             };
-            });
+            //Basic Firebase Saving Data
+            firebase.initializeApp(config);
+
+            var db = firebase.database();
+
+            function writeNewPost(uid, username, title, body) {
+                // A post entry.
+                var postData = {
+                    author: username,
+                    uid: uid,
+                    body: body,
+                    title: title,
+                    starCount: 0
+                };
+                // Get a key for a new Post.
+                var newPostKey = db.ref().child('posts').push().key;
+
+                // Write the new post's data simultaneously in the posts list and the user's post list.
+                var updates = {};
+                updates['/posts/' + newPostKey] = postData;
+                updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+                return db.ref().update(updates);
+            }
+
+            function addContact(username, email) {
+                db.ref().child('contact').push({
+                    username: username,
+                    email: email
+                });
+            }
         </script>
 
-        <script src="jquery-2.1.0.min.js"></script>
-        <script src="dist/js/bootstrap.js"></script>
+        
         <!-- A Testing JS File -->
         <script src='buttontest.js'></script>
 
