@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <title>Bootstrap 101 Template</title>
+        <link href="dist/css/bootstrap.css" rel="stylesheet">
+
+        <!--Self Made CSS-->
+        <link rel="stylesheet" type="text/css" href="Werner_Website.css">
+        <link rel="stylesheet" href="contactForm.css">
+
+    </head>
+    <body>
+        <div id="spacer"></div>
+        <!-- The Nav Box Is Here -->
+        <div id="nav" class="container-fluid">
+            <ul>
+                
+                    <li><a href="#home">主頁</a></li>
+                    
+                    <li class="dropdown"><a href="#startlearningjapanese">學日文</a>
+                        <div class="dropdown-content">
+                            <a href="#Instructor">老師陣容</a>
+                            <a href="#Blog">部落格</a>
+                            <a href="#Testimonials">學生怎麼說</a>
+                        </div>
+                    </li>
+
+                <li class="dropdown"><a href="#news">老師陣容</a>
+                    <div class="dropdown-content">
+                        <div>
+                            <a href="#Link1">Link 1</a>
+                            <a href="#Link2">Link 2</a>
+                            <a href="#Link3">Link 3</a>
+                        </div>
+                </li>
+                <li><a href="#aboutus">我們是誰</a></li>
+                <li><a href="#contactus">聯絡我們</a></li>
+            </ul>
+        </div> <!-- Nav Box Ends -->
+
+        <!-- Page 1 Home -->
+                <div id="page1" class="container-fluid">
+                    <div class="row">
+                        <a id="home" class="active smooth"></a>
+                        <img class="img" src="kyoto_3.jpg" alt="coffee">
+                        <h2>不要只學日文
+                        <br>學習日文和日本的文化
+                        <br>用日本的方法</h2>
+                    </div>
+                </div>
+
+        <!-- Page 2 Start Learning Japanese -->
+                <div id="page2" class="container-fluid">
+                    <div class="row">
+                        <a id="startlearningjapanese" class="smooth"></a>
+                        <img class="img" src="teach japanese_Fotor.jpg" alt="coffee">
+                        <button id="start" onclick="addContact('glenchao', 'glenchao@outlook.com')">開始學吧！</button>
+                    </div>
+                </div>
+
+        <!-- Page 3 News -->
+                <div id="page3" class="container-fluid">
+                    <div class="row">
+                        <a id="news" class="smooth"></a>
+                            <!-- Slider Starts Here -->
+                            <script type="text/javascript" src="my_slider.js"></script>
+                            <div id="slider">
+                                <ul class="slides">
+                                    <li class="slide"><img src="img/teacher1.png"/></li>
+                                    <li class="slide"><img src="img/teacher2.png"/></li>
+                                    <li class="slide"><img src="img/teacher3.png"/></li>
+                                    <li class="slide"><img src="img/teacher1.png"/></li>
+                                </ul>
+                            </div>
+                            <!-- Slider Ends Here -->
+                    </div>
+                </div>
+
+        <!-- Page 4 Abous Us -->
+                <div id="page4" class="container-fluid">
+                    <div class="row highlightedRow">
+                        <a id="aboutus" class="smooth"></a>
+                        <div class="section">
+                            <span class="heading1">明奈線上日文學校</span>
+                            <p>
+                                我們是一群喜愛日文、日本文化的年輕人。在自身經歷過去日本學日文的經驗，
+                                覺得學日文應該要跟上新網路 2.0 的時代。現在大部份的人學日文還是停留在人到補習班的習慣，
+                                跟大家一起開班，沒有足夠的人就不能開課。要上班了話，就難以學日文因為有時加班就會錯過一些課程，
+                                不但浪費錢，也會跟不上進度。
+                            </p>
+                            <p>
+                                明奈線上日文學校是一個網路日語學校，因為創始人自己的需求，
+                                提供給想學日文的人一個適合自己進度、方便的解決方案。想學日文的人不但可以跟專業的老師學習日文，
+                                還可以透過我們的平台跟倒地日本人聊天，完完全全的讓自己沈浸在一個日文的環境。
+                                學習日語最快、最好的訣竅就是，讓自己融入日本人的文化、講日文的環境、和專業老師的指導。
+                            </p>
+                        </div>
+
+        <!-- Page 5 Contact Us -->
+                <div id="page5" class="container-fluid">
+                    <a id="contactus" class="smooth"></a>
+                        <div class="row section">
+                            <div id="form-messages"></div>
+                            <form id="ajax-contact" method="post" action="mailer.php">
+                                <div class="field">
+                                    <label for="name">姓名:</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="field">
+                                    <label for="email">Email:</label>
+                                    <input type="text" id="email" name="email" required>
+                                </div>
+                                <div class="field">
+                                    <label for="phone">電話:</label>
+                                    <input type="text" id="phone" name="phone" required>
+                                </div>
+                                <div class="field">
+                                    <button type='submit'>寄出:</button>
+                                </div>
+                                <script src="app.js"></script>
+                            </form>
+                        </div>
+                  </div>
+
+        <!--Firebase-->
+        <script src="jquery-2.1.0.min.js"></script>
+        <script src="dist/js/bootstrap.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCTAD_8dK9w5MYRvPNbHr7isUGcIZNtDrU",
+                authDomain: "project-3373896903953203314.firebaseapp.com",
+                databaseURL: "https://project-3373896903953203314.firebaseio.com",
+                storageBucket: "project-3373896903953203314.appspot.com",
+            };
+            //Basic Firebase Saving Data
+            firebase.initializeApp(config);
+
+            var db = firebase.database();
+
+            function writeNewPost(uid, username, title, body) {
+                // A post entry.
+                var postData = {
+                    author: username,
+                    uid: uid,
+                    body: body,
+                    title: title,
+                    starCount: 0
+                };
+                // Get a key for a new Post.
+                var newPostKey = db.ref().child('posts').push().key;
+
+                // Write the new post's data simultaneously in the posts list and the user's post list.
+                var updates = {};
+                updates['/posts/' + newPostKey] = postData;
+                updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+                return db.ref().update(updates);
+            }
+
+            function addContact(username, email) {
+                db.ref().child('contact').push({
+                    username: username,
+                    email: email
+                });
+            }
+        </script>
+
+        
+        <!-- A Testing JS File -->
+        <script src='buttontest.js'></script>
+
+        <!-- Javascript Scrolling Code -->
+        <script>
+            $('.smooth').on('click', function() {
+            $.smoothScroll({
+                scrollElement: $('body'),
+                scrollTarget: '#' + this.id
+                           });
+    return false;
+            });
+        </script>
+    <!--<script src="productData.js"></script>-->
+
+    </body>
+
+</html>
