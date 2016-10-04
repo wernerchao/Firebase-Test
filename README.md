@@ -1,6 +1,2 @@
 # firebase_database
-database related
-
-
-Testing shit out.
-Got stuck at Firebase database.
+This is a respo for testing Firebase. Please do not download this.
